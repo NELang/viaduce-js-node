@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "ecstatic": "^0.5.4",
+    "minimist": "^1.1.0",
+    "node-static": "^0.7.4",
+    "peer": "^0.2.7"
+  }
+}
