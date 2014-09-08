@@ -1,0 +1,57 @@
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Editor</title>
+	<style type="text/css" media="screen">
+	body {
+		overflow: hidden;
+	}
+
+	#history {
+		width: 100%;
+		height: 600px;
+		overflow-y: scroll;
+	}
+
+	#stream {
+		word-wrap: break-word;
+	}
+
+	#message {
+		width: 400px;
+		min-height: 50px;
+	}
+
+	span[timestamp] {
+		color: #F0F0F0;
+	}
+
+	</style>
+</head>
+<body>
+
+	<div id="history">
+		<div id="stream"></div>
+	</div>
+	<br>
+	<textarea id="message" autofocus placeholder="Type message here..."></textarea>
+	<br>
+	<form id="connect">
+		<span> Alias </span><input type="text" id="alias"/>
+		<span> Mesh </span><input type="text" id="mesh"/>
+		<input type="submit" value="Connect"></input>
+	</form>
+	<br>
+	<button id="forget">Forget</button>
+
+	<script type="text/javascript" src="../../lib/util/r4.js"></script>
+	<script type="text/javascript" src="../../lib/p2p/peer.js"></script>
+	<script type="text/javascript" src="../../lib/viaduce/dist/viaduce.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
+
+
