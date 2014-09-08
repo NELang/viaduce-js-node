@@ -167,7 +167,7 @@
 					mesh: "viaduce:"+mesh,
 				}, {
 					host: host,
-					port: 8081,
+					port: location.port,
 					path: '/',
 				});
 
