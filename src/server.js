@@ -55,6 +55,6 @@ require('http').createServer(function (request, response) {
 			file.serve(request, response);
 		}).resume();
 	})
-}).listen(options.port);
+}).listen(process.env.PORT || options.port);
 
 
