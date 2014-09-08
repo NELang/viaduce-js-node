@@ -47,7 +47,10 @@
 			mesh: __document.querySelector("#mesh"),
 			connect: __document.querySelector("#connect"),
 			forget: __document.querySelector("#forget"),
-			log: function scope (message) {
+			tail: function scope (target) {
+				target.scrollTop = target.scrollHeight - target.clientHeight;
+			},
+			log: function scope (message, own) {
 				var __ = scope.prototype;
 
 				var doc = __.document;
@@ -59,6 +62,13 @@
 				var chat;
 				var div;
 				var now = "<span timestamp>("+Date().toString()+")</span><br>";
+				var tail = true;
+
+				if (stream.scrollHeight > stream.scrollTop + stream.clientHeight) {
+					if (!own) {
+						tail = false;
+					}
+				}
 
 				id = message.id;
 				alias = message.alias;
@@ -70,7 +80,9 @@
 
 				stream.appendChild(div);
 
-				__.history.scrollTop = __.history.clientHeight;
+				if (tail) {
+					__.tail(stream);
+				}
 
 			},
 			ondataFactory: null,
@@ -103,14 +115,14 @@
 						if (type === "viaduce") {
 
 							if (!viaduce) {
-								__.log(message);
+								__.log(message, own);
 							} else if (!viaduce.isArbiter) {
-								__.log(message);
+								__.log(message, own);
 								if (own) {
 									viaduce.conn.send(data);
 								}
 							} else if (own || (message.id === conn.peer)) {
-								__.log(message);
+								__.log(message, own);
 
 								for (index = 0; index < count; index++) {
 									c = conns[index];
@@ -191,6 +203,8 @@
 				}
 
 				__.history.appendChild(__.stream);
+
+				__.tail(__.stream);
 			},
 
 			viaduce: null,
