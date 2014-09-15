@@ -107,8 +107,10 @@ server.on('connection', protobind({
 		String: String,
 		JSON: JSON,
 		console: console,
+
 	}, function scope (data, id, oncycle) {
 		var __ = scope.prototype;
+
 		try {
 			var message = JSON.parse(data);
 			var type = message && message.type;
@@ -122,7 +124,7 @@ server.on('connection', protobind({
 				__.console.log("viaduce");
 				viaduce = message.viaduce;
 				if (viaduce === "join") {
-					mesh = String(message.mesh);
+					mesh = __.String(message.mesh);
 					if (tuple = __.net.work[mesh]) {
 						__.net.play[mesh] = tuple;
 						arbiter = tuple.arbiter;
